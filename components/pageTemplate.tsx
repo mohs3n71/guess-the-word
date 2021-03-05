@@ -4,16 +4,18 @@ import Footer from 'components/footer';
 
 interface PageTemplateProps {
   children?: ReactNode,
+  pageTitle: string,
+  footerDescription: string,
 }
 
-const PageTemplate: FunctionComponent<PageTemplateProps> = ({ children }) => {
+const PageTemplate: FunctionComponent<PageTemplateProps> = ({ children, pageTitle, footerDescription }) => {
   return (
     <>
-      <Header pageTitle="Guess The Word" />
+      <Header pageTitle={pageTitle} />
       <main role="main" className="container">
         {children}
       </main>
-      <Footer description="You Can only play this game 2 times per day" />
+      <Footer description={footerDescription} />
     </>
   );
 };

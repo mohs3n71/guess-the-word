@@ -6,13 +6,17 @@ import Input from 'components/input';
 import Button from 'components/button';
 
 const Home: FunctionComponent = () => {
+
   useEffect(() => {
     const request = new HttpRequest('GET', 'http://localhost:3000/api/verify');
     request.send();
-  }, [])
+  }, []);
 
   return (
-    <PageTemplate>
+    <PageTemplate
+      pageTitle="Guess The Word"
+      footerDescription="You Can only play this game 2 times per day"
+    >
       <div
         className="d-flex w-100 h-100 justify-content-center align-items-center"
         style={{
