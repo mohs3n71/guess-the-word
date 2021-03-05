@@ -1,0 +1,27 @@
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #00000060;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modalContent {
+  background-color: #fff;
+  margin-top: 50px;
+  border-radius: 20px;
+  min-height: 300px;
+  max-height: 100%;
+  min-width: 500px;
+  max-width: 100%;
+  position: relative;
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 30px;
+}
