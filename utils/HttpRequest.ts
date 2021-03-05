@@ -26,7 +26,7 @@ class HttpRequest {
   }
 
   set headers(value: object) {
-    this._headers = value;
+    this._headers = value ?? {};
   }
 
   get method(): Method {

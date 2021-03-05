@@ -21,7 +21,7 @@ const Home: FunctionComponent = () => {
   const submitHandler: FormEventHandler = (event) => {
     event.preventDefault();
     setLoading(true);
-    const request = new HttpRequest('GET', verifyUrl);
+    const request = new HttpRequest('POST', verifyUrl, { word: inputRef.current.value });
     request.send()
       .then((response) => {
         setLoading(false);
@@ -31,7 +31,7 @@ const Home: FunctionComponent = () => {
       .catch((error) => {
         setLoading(false);
         setOpen(true);
-        setMessage(error?.response?.message);
+        setMessage(error?.response?.data?.message);
       });
   }
 

@@ -1,1 +1,1 @@
-export const verifyUrl = 'http://localhost:3000/api/verify';
+export const verifyUrl: string = '/api/verify';
