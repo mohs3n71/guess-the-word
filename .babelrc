@@ -12,6 +12,7 @@
         "alias": {
           "@components": "./src/components",
           "@api": "./src/api",
+          "@styles": "./src/styles",
           "@models": "./src/models",
           "@screens": "./src/screens",
           "@hooks": "./src/hooks",

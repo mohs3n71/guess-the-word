@@ -59,11 +59,15 @@ class HttpRequest {
 
     axiosInstance.interceptors.response.use(
       (value?: any) => {
-        console.log(value);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(value);
+        }
         return Promise.resolve(value)
       },
       (error?: any) => {
-        console.log(error);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(error);
+        }
         return Promise.reject(error);
       });
 
