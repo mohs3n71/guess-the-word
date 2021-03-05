@@ -1,4 +1,4 @@
-import { FunctionComponent, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 interface InputProps {
   inputID: string,

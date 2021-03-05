@@ -1,4 +1,4 @@
-import React, { FormEventHandler, FunctionComponent, useState } from 'react';
+import React, { FormEventHandler, FunctionComponent, useState, useRef } from 'react';
 import PageTemplate from 'components/pageTemplate';
 import HttpRequest from 'utils/HttpRequest';
 import Form from 'components/form';
@@ -10,8 +10,9 @@ import { verifyUrl } from 'constants/endpoints';
 
 const Home: FunctionComponent = () => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
   const [open, setOpen] = useState<boolean>(false);
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onClose = (): void => {
     setOpen(false);
@@ -21,12 +22,23 @@ const Home: FunctionComponent = () => {
     event.preventDefault();
     setLoading(true);
     const request = new HttpRequest('GET', verifyUrl);
-    request.send();
+    request.send()
+      .then((response) => {
+        setLoading(false);
+        setOpen(true);
+        setMessage(response?.data?.message);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setOpen(true);
+        setMessage(error?.response?.message);
+      });
   }
 
   return (
     <>
       <Modal open={open} onClose={onClose}>
+        {message}
       </Modal>
       <PageTemplate
         pageTitle="Guess The Word"

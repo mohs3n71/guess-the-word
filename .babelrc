@@ -13,18 +13,8 @@
           "@components": "./src/components",
           "@api": "./src/api",
           "@styles": "./src/styles",
-          "@models": "./src/models",
-          "@screens": "./src/screens",
-          "@hooks": "./src/hooks",
-          "@services": "./src/services",
           "@constants": "./src/constants",
-          "@context": "./src/context",
-          "@queries": "./src/queries",
-          "@data": "./src/data",
-          "@typeDefs": "./src/types",
-          "@generated": "./src/generated",
-          "@utils": "./src/utils",
-          "@public": "./public"
+          "@utils": "./src/utils"
         }
       }
     ]
