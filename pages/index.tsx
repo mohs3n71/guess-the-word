@@ -38,7 +38,7 @@ const Home: FunctionComponent = () => {
   return (
     <>
       <Modal open={open} onClose={onClose}>
-        {message}
+          {message}
       </Modal>
       <PageTemplate
         pageTitle="Guess The Word"
