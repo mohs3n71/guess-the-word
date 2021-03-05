@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, forwardRef } from 'react';
 
 interface InputProps {
   inputID: string,
@@ -8,7 +8,7 @@ interface InputProps {
   required?: boolean,
 }
 
-const Input: FunctionComponent<InputProps> = ({ inputID, labelText, type, placeholder, required = false }) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ inputID, labelText, type, placeholder, required = false }, ref) => {
   return (
     <>
       <label
@@ -17,6 +17,7 @@ const Input: FunctionComponent<InputProps> = ({ inputID, labelText, type, placeh
         {labelText}
       </label>
       <input
+        ref={ref}
         type={type}
         id={inputID}
         className="form-control"
@@ -25,6 +26,6 @@ const Input: FunctionComponent<InputProps> = ({ inputID, labelText, type, placeh
       />
     </>
   )
-}
+});
 
 export default Input;

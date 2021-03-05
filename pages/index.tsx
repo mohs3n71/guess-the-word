@@ -6,10 +6,12 @@ import Input from 'components/input';
 import Button from 'components/button';
 import Modal from 'components/modal';
 import Loading from 'components/loading';
+import { verifyUrl } from 'constants/endpoints';
 
 const Home: FunctionComponent = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onClose = (): void => {
     setOpen(false);
@@ -17,6 +19,9 @@ const Home: FunctionComponent = () => {
 
   const submitHandler: FormEventHandler = (event) => {
     event.preventDefault();
+    setLoading(true);
+    const request = new HttpRequest('GET', verifyUrl);
+    request.send();
   }
 
   return (
@@ -34,6 +39,7 @@ const Home: FunctionComponent = () => {
             onSubmit={submitHandler}
           >
             <Input
+              ref={inputRef}
               inputID="wordInput"
               labelText="Word"
               placeholder="Enter Your Guess"
