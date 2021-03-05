@@ -6,7 +6,7 @@ class HttpRequest {
   _body: object;
   _headers: object;
 
-  constructor(method?: Method, url?: string, body?: object, headers?: object) {
+  constructor(method: Method, url: string, body?: object, headers?: object) {
     this.method = method;
     this.url = url;
     this.body = body;
@@ -47,24 +47,31 @@ class HttpRequest {
   }
 
   send(): AxiosPromise<any> {
-    if (!this._method || !this._url) {
-      return;
-    }
-
     const axiosInstance = axios.create();
 
-    axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log(config);
-      }
-      return config;
-    })
+    axiosInstance.interceptors.request.use(
+      (config: AxiosRequestConfig) => {
+        if (process.env.NODE_ENV === 'development') {
+          console.log(config);
+        }
+        return config;
+      });
+
+    axiosInstance.interceptors.response.use(
+      (value?: any) => {
+        console.log(value);
+        return Promise.resolve(value)
+      },
+      (error?: any) => {
+        console.log(error);
+        return Promise.reject(error);
+      });
 
     return axiosInstance({
-      method: this._method,
-      url: this._url,
-      data: this._body,
-      headers: this._headers
+      method: this.method,
+      url: this.url,
+      data: this.body,
+      headers: this.headers
     });
   }
 }
